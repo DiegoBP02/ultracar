@@ -1,7 +1,6 @@
 package com.example.Ultracar.entities;
 
 import com.example.Ultracar.enums.Accessory;
-import com.example.Ultracar.enums.Observation;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,6 +21,7 @@ public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(nullable = false)
     private String licensePlate;
     @Column(nullable = false)
     private String year;
@@ -32,11 +32,6 @@ public class Vehicle {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private List<Accessory> accessories;
-    @ElementCollection(targetClass = Observation.class)
-    @CollectionTable(name = "car_observations", joinColumns = @JoinColumn(name = "car_id"))
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private List<Observation> observations;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)

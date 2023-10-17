@@ -22,6 +22,7 @@ public class DefaultExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<StandardError> Exception(Exception e, HttpServletRequest request) {
+        logger.error("Exception occurred:", e);
         String error = "Server error";
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         StandardError err = new StandardError(Instant.now(), status.value(), error,
@@ -33,7 +34,7 @@ public class DefaultExceptionHandler {
     @ExceptionHandler(UsernameNotFoundException.class)
     public ResponseEntity<StandardError> UsernameNotFoundException
             (UsernameNotFoundException e, HttpServletRequest request) {
-        logger.error("Exception occurred:", e);
+        logger.error("Username not found exception occurred:", e);
         String error = "Username was not found in database";
         HttpStatus status = HttpStatus.NOT_FOUND;
         StandardError err = new StandardError(Instant.now(), status.value(), error,

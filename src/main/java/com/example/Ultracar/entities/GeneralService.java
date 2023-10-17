@@ -1,5 +1,6 @@
 package com.example.Ultracar.entities;
 
+import com.example.Ultracar.enums.Situation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,4 +21,6 @@ public class GeneralService {
     private UUID id;
     @Column(nullable = false, unique = true)
     private String serviceName;
+    @Enumerated(EnumType.STRING)
+    private Situation situation;
 }

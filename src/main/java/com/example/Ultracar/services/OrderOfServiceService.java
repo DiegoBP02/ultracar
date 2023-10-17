@@ -1,0 +1,74 @@
+package com.example.Ultracar.services;
+
+import com.example.Ultracar.dtos.OrderOfServiceDTO;
+import com.example.Ultracar.dtos.OrderOfServiceResponse;
+import com.example.Ultracar.entities.*;
+import com.example.Ultracar.exceptions.UniqueConstraintViolationException;
+import com.example.Ultracar.repositories.OrderOfServiceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
+
+import java.security.SecureRandom;
+import java.time.Instant;
+import java.util.List;
+
+@Service
+public class OrderOfServiceService {
+
+    @Autowired
+    private OrderOfServiceRepository orderOfServiceRepository;
+
+    @Autowired
+    private ClientService clientService;
+
+    @Autowired
+    private VehicleService vehicleService;
+
+    @Autowired
+    private SpecificServiceService specificServiceService;
+
+    @Autowired
+    private GeneralServiceService generalServiceService;
+
+    @Autowired
+    private ObservationService observationService;
+
+    public OrderOfServiceResponse create(OrderOfServiceDTO generalServiceDTO) {
+        Client client = clientService.findByCpf(generalServiceDTO.getClientCpf());
+        Vehicle vehicle = vehicleService.findById(generalServiceDTO.getVehicleId());
+        List<SpecificService> specificServices
+                = specificServiceService.findAllByIdIn(generalServiceDTO.getSpecificServiceIds());
+        List<GeneralService> generalServices
+                = generalServiceService.findAllByIdIn(generalServiceDTO.getGeneralServiceIds());
+        List<Observation> observations
+                = observationService.findAllByIdIn(generalServiceDTO.getObservationIds());
+        try {
+            OrderOfService orderOfService = OrderOfService.builder()
+                    .createdAt(Instant.now())
+                    .diagnosticId(randomValue())
+                    .client(client)
+                    .vehicle(vehicle)
+                    .specificServices(specificServices.isEmpty() ? null : specificServices)
+                    .generalServices(generalServices.isEmpty() ? null : generalServices)
+                    .observations(observations.isEmpty() ? null : observations)
+                    .build();
+
+            orderOfServiceRepository.save(orderOfService);
+            return new OrderOfServiceResponse(orderOfService);
+        } catch (DataIntegrityViolationException e) {
+            throw new UniqueConstraintViolationException();
+        }
+    }
+
+    private String randomValue() {
+        SecureRandom random = new SecureRandom();
+        int num = random.nextInt(100000);
+        return String.format("%05d", num);
+    }
+
+    public List<OrderOfService> findAll() {
+        return orderOfServiceRepository.findAll();
+    }
+
+}

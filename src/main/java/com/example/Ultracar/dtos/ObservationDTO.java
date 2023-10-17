@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GeneralServiceDTO {
+public class ObservationDTO {
     @NotBlank
-    private String serviceName;
+    private String name;
     @NotNull
     private Situation situation;
 }

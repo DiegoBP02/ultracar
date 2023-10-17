@@ -1,7 +1,6 @@
 package com.example.Ultracar.dtos;
 
 import com.example.Ultracar.enums.Accessory;
-import com.example.Ultracar.enums.Observation;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -27,7 +26,6 @@ public class VehicleDTO {
     @NotBlank
     private String model;
     private List<Accessory> accessories;
-    private List<Observation> observations;
     @NotBlank
     private String clientCpf;
 }

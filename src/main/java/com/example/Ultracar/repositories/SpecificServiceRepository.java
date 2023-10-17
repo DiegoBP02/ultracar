@@ -10,4 +10,6 @@ import java.util.UUID;
 @Repository
 public interface SpecificServiceRepository extends JpaRepository<SpecificService, UUID> {
     List<SpecificService> findAllByVehicleModel(String vehicleModel);
+
+    List<SpecificService> findAllByIdIn(List<UUID> ids);
 }
