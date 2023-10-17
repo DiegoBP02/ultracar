@@ -30,22 +30,24 @@ public class OrderOfServiceResponse {
         this.diagnosticId = orderOfService.getDiagnosticId();
         this.clientResponse = mapClientToClientResponse(orderOfService.getClient());
         this.vehicleResponse = mapVehicleToVehicleResponse(orderOfService.getVehicle());
-        this.specificServices = mapEntitiesToServiceResponses(
-                orderOfService.getSpecificServices(),
-                SpecificService::getServiceName,
-                SpecificService::getSituation
-        );
-        this.generalServices = mapEntitiesToServiceResponses(
-                orderOfService.getGeneralServices(),
-                GeneralService::getServiceName,
-                GeneralService::getSituation
-        );
-        this.observations = mapEntitiesToServiceResponses(
-                orderOfService.getObservations(),
-                Observation::getName,
-                Observation::getSituation
-        );
-
+        this.specificServices = orderOfService.getSpecificServices() != null ?
+                mapEntitiesToServiceResponses(
+                        orderOfService.getSpecificServices(),
+                        SpecificService::getServiceName,
+                        SpecificService::getSituation) :
+                null;
+        this.generalServices = orderOfService.getGeneralServices() != null ?
+                mapEntitiesToServiceResponses(
+                        orderOfService.getGeneralServices(),
+                        GeneralService::getServiceName,
+                        GeneralService::getSituation) :
+                null;
+        this.observations = orderOfService.getObservations() != null ?
+                mapEntitiesToServiceResponses(
+                        orderOfService.getObservations(),
+                        Observation::getName,
+                        Observation::getSituation) :
+                null;
     }
 
     public <T> List<ServiceResponse> mapEntitiesToServiceResponses

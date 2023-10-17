@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.Instant;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -37,12 +38,16 @@ public class OrderOfServiceService {
     public OrderOfServiceResponse create(OrderOfServiceDTO generalServiceDTO) {
         Client client = clientService.findByCpf(generalServiceDTO.getClientCpf());
         Vehicle vehicle = vehicleService.findById(generalServiceDTO.getVehicleId());
-        List<SpecificService> specificServices
-                = specificServiceService.findAllByIdIn(generalServiceDTO.getSpecificServiceIds());
-        List<GeneralService> generalServices
-                = generalServiceService.findAllByIdIn(generalServiceDTO.getGeneralServiceIds());
-        List<Observation> observations
-                = observationService.findAllByIdIn(generalServiceDTO.getObservationIds());
+        List<SpecificService> specificServices = (generalServiceDTO.getSpecificServiceIds() != null)
+                ? specificServiceService.findAllByIdIn(generalServiceDTO.getSpecificServiceIds())
+                : Collections.emptyList();
+        List<GeneralService> generalServices = (generalServiceDTO.getGeneralServiceIds() != null)
+                ? generalServiceService.findAllByIdIn(generalServiceDTO.getGeneralServiceIds())
+                : Collections.emptyList();
+        List<Observation> observations = (generalServiceDTO.getObservationIds() != null)
+                ? observationService.findAllByIdIn(generalServiceDTO.getObservationIds())
+                : Collections.emptyList();
+
         try {
             OrderOfService orderOfService = OrderOfService.builder()
                     .createdAt(Instant.now())
