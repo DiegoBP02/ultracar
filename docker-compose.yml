@@ -8,6 +8,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: admin
+      POSTGRES_DB: ultracardb
     volumes:
       - psql-ultracar:/var/lib/postgresql/data
     command: postgres -c 'max_connections=1000'
