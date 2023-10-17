@@ -1,11 +1,11 @@
 package com.example.Ultracar.exceptions;
 
-public class UniqueConstraintViolationError extends RuntimeException {
-    public UniqueConstraintViolationError() {
+public class UniqueConstraintViolationException extends RuntimeException {
+    public UniqueConstraintViolationException() {
         super("A record with the same value already exists. Duplicates are not allowed.");
     }
 
-    public UniqueConstraintViolationError(String entity, String property) {
+    public UniqueConstraintViolationException(String entity, String property) {
         super("A " + entity + " with the same " + property +
                 " already exists. Duplicates are not allowed.");
     }

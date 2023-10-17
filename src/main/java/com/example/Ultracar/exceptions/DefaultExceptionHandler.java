@@ -1,11 +1,9 @@
 package com.example.Ultracar.exceptions;
 
-
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -77,9 +75,9 @@ public class DefaultExceptionHandler {
         return ResponseEntity.status(status).body(err);
     }
 
-    @ExceptionHandler(UniqueConstraintViolationError.class)
-    public ResponseEntity<StandardError> UniqueConstraintViolationError
-            (UniqueConstraintViolationError e, HttpServletRequest request) {
+    @ExceptionHandler(UniqueConstraintViolationException.class)
+    public ResponseEntity<StandardError> UniqueConstraintViolationException
+            (UniqueConstraintViolationException e, HttpServletRequest request) {
         String error = "Duplicate entry found. Please provide a unique value";
         HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError err = new StandardError(Instant.now(), status.value(), error,
@@ -105,6 +103,17 @@ public class DefaultExceptionHandler {
         logger.error("Bad credentials exception:", e);
         String error = "Bad credentials";
         HttpStatus status = HttpStatus.UNAUTHORIZED;
+        StandardError err = new StandardError(Instant.now(), status.value(), error,
+                e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<StandardError> ResourceNotFoundException
+            (ResourceNotFoundException e, HttpServletRequest request) {
+        logger.error("Resource not found exception:", e);
+        String error = "Resource not found exception";
+        HttpStatus status = HttpStatus.NOT_FOUND;
         StandardError err = new StandardError(Instant.now(), status.value(), error,
                 e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(err);

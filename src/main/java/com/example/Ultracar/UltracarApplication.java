@@ -1,11 +1,8 @@
 package com.example.Ultracar;
 
-import com.example.Ultracar.dtos.RegisterDTO;
 import com.example.Ultracar.entities.User;
 import com.example.Ultracar.enums.Role;
 import com.example.Ultracar.repositories.UserRepository;
-import com.example.Ultracar.services.AuthenticationService;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,27 +13,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SpringBootApplication
 public class UltracarApplication {
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-	public static void main(String[] args) {
-		SpringApplication.run(UltracarApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(UltracarApplication.class, args);
+    }
 
-	@Bean
-	CommandLineRunner runner()
-	{
-		return args -> {
-			User admin = User.builder()
-					.name("admin")
-					.password(passwordEncoder.encode("password"))
-					.role(Role.ADMIN)
-					.build();
-			userRepository.save(admin);
-		};
-	}
+    @Bean
+    CommandLineRunner runner() {
+        return args -> {
+            User admin = User.builder()
+                    .name("admin")
+                    .password(passwordEncoder.encode("password"))
+                    .role(Role.ADMIN)
+                    .build();
+            userRepository.save(admin);
+        };
+    }
 
 }

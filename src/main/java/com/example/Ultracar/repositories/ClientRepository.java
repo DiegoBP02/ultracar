@@ -1,6 +1,6 @@
 package com.example.Ultracar.repositories;
 
-import com.example.Ultracar.entities.User;
+import com.example.Ultracar.entities.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +8,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID> {
-    Optional<User> findByName(String name);
+public interface ClientRepository extends JpaRepository<Client, UUID> {
+    Optional<Client> findByCpf(String cpf);
 }

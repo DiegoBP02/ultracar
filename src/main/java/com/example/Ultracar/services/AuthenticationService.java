@@ -4,7 +4,7 @@ package com.example.Ultracar.services;
 import com.example.Ultracar.dtos.LoginDTO;
 import com.example.Ultracar.dtos.RegisterDTO;
 import com.example.Ultracar.entities.User;
-import com.example.Ultracar.exceptions.UniqueConstraintViolationError;
+import com.example.Ultracar.exceptions.UniqueConstraintViolationException;
 import com.example.Ultracar.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -46,7 +46,7 @@ public class AuthenticationService implements UserDetailsService {
                     .build();
             userRepository.save(user);
         } catch (DataIntegrityViolationException e) {
-            throw new UniqueConstraintViolationError();
+            throw new UniqueConstraintViolationException();
         }
     }
 
