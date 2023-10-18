@@ -67,12 +67,14 @@ export default function ClientCard({
       </Center>
       {showCars ? (
         <Flex>
-          {vehicles.map((vehicle) => (
+          {vehicles.map((vehicle, index) => (
             <VehicleCard
               licensePlate={vehicle.licensePlate}
               model={vehicle.model}
               year={vehicle.year}
               accessories={vehicle.accessories}
+              id={vehicle.id}
+              key={index}
             />
           ))}
         </Flex>

@@ -1,6 +1,7 @@
 package com.example.Ultracar.services;
 
 import com.example.Ultracar.dtos.VehicleDTO;
+import com.example.Ultracar.dtos.VehicleResponseWithClientCpf;
 import com.example.Ultracar.entities.Client;
 import com.example.Ultracar.entities.Vehicle;
 import com.example.Ultracar.exceptions.ResourceNotFoundException;
@@ -40,5 +41,23 @@ public class VehicleService {
     public Vehicle findById(UUID id) {
         return vehicleRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Vehicle not found. ID: " + id));
+    }
+
+    public VehicleResponseWithClientCpf findByIdWithClientCpf(UUID id) {
+        Vehicle vehicle = vehicleRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Vehicle not found. ID: " + id));
+
+        return mapVehicleToVehicleResponseWithClientCpf(vehicle);
+    }
+
+    private VehicleResponseWithClientCpf mapVehicleToVehicleResponseWithClientCpf(Vehicle vehicle) {
+        return VehicleResponseWithClientCpf.builder()
+                .id(vehicle.getId())
+                .licensePlate(vehicle.getLicensePlate())
+                .year(vehicle.getYear())
+                .model(vehicle.getModel())
+                .accessories(vehicle.getAccessories())
+                .clientCpf(vehicle.getClient().getCpf())
+                .build();
     }
 }

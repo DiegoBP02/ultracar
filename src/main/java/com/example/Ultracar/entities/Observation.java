@@ -14,13 +14,16 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "t_observation")
+@Table(name = "t_observation", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name", "situation"})
+})
 public class Observation {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Situation situation;
 }

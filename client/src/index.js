@@ -8,6 +8,7 @@ import Login from "./components/login/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
+import OrderOfService from "./components/dashboard/OrderOfService";
 
 const { ToastContainer } = createStandaloneToast();
 
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Dashboard />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/orderOfService/:vehicleId",
+    element: (
+      <ProtectedRoute>
+        <OrderOfService />
       </ProtectedRoute>
     ),
   },

@@ -49,17 +49,17 @@ public class DataLoader implements CommandLineRunner {
     private void createObservations() {
         Observation observation1 = Observation.builder()
                 .name("Arranhão pequeno")
-                .situation(Situation.REPAIR)
+                .situation(Situation.REPARAR)
                 .build();
 
         Observation observation2 = Observation.builder()
                 .name("Amassado na porta")
-                .situation(Situation.FIXED)
+                .situation(Situation.COMPLETO)
                 .build();
 
         Observation observation3 = Observation.builder()
                 .name("Pintura descascada")
-                .situation(Situation.IN_PROGRESS)
+                .situation(Situation.EM_PROGRESSO)
                 .build();
 
         List<Observation> observations = Arrays.asList(observation1, observation2, observation3);
@@ -73,17 +73,17 @@ public class DataLoader implements CommandLineRunner {
         SpecificService specificService1 = SpecificService.builder()
                 .vehicleModel("Challenger")
                 .serviceName("troca de airbag")
-                .situation(Situation.REPAIR)
+                .situation(Situation.REPARAR)
                 .build();
         SpecificService specificService2 = SpecificService.builder()
                 .vehicleModel("Fiesta")
                 .serviceName("reparo do motor")
-                .situation(Situation.FIXED)
+                .situation(Situation.COMPLETO)
                 .build();
         SpecificService specificService3 = SpecificService.builder()
                 .vehicleModel("Gol")
                 .serviceName("substituição da bateria")
-                .situation(Situation.IN_PROGRESS)
+                .situation(Situation.EM_PROGRESSO)
                 .build();
 
         List<SpecificService> specificServices
@@ -97,17 +97,17 @@ public class DataLoader implements CommandLineRunner {
     private void createGeneralServices() {
         GeneralService generalService1 = GeneralService.builder()
                 .serviceName("lavagem do carro")
-                .situation(Situation.PENDING)
+                .situation(Situation.PENDENTE)
                 .build();
 
         GeneralService generalService2 = GeneralService.builder()
                 .serviceName("troca de óleo")
-                .situation(Situation.IN_PROGRESS)
+                .situation(Situation.EM_PROGRESSO)
                 .build();
 
         GeneralService generalService3 = GeneralService.builder()
                 .serviceName("alinhamento e balanceamento")
-                .situation(Situation.IN_PROGRESS)
+                .situation(Situation.EM_PROGRESSO)
                 .build();
 
         List<GeneralService> generalServices

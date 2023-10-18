@@ -47,7 +47,6 @@ public class OrderOfServiceService {
         List<Observation> observations = (generalServiceDTO.getObservationIds() != null)
                 ? observationService.findAllByIdIn(generalServiceDTO.getObservationIds())
                 : Collections.emptyList();
-
         try {
             OrderOfService orderOfService = OrderOfService.builder()
                     .createdAt(Instant.now())

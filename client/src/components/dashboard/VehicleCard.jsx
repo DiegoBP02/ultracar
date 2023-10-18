@@ -9,13 +9,17 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function VehicleCard({
   licensePlate,
   model,
   year,
   accessories,
+  id,
 }) {
+  const navigate = useNavigate();
+
   return (
     <Box
       maxW={"300px"}
@@ -54,6 +58,7 @@ export default function VehicleCard({
             _focus={{
               bg: "green.500",
             }}
+            onClick={() => navigate(`/orderOfService/${id}`)}
           >
             Criar ordem
           </Button>

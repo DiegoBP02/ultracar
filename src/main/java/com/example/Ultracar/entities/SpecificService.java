@@ -14,8 +14,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "t_specific_service",
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"serviceName", "vehicleModel"})})
+@Table(name = "t_specific_service", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"serviceName", "situation", "vehicleModel"})
+})
 public class SpecificService {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -25,5 +26,6 @@ public class SpecificService {
     @Column(nullable = false)
     private String vehicleModel;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Situation situation;
 }

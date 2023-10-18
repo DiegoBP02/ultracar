@@ -1,10 +1,10 @@
 package com.example.Ultracar.enums;
 
 public enum Situation {
-    PENDING,
-    REPAIR,
-    IN_PROGRESS,
-    FIXED,
-    DIAGNOSIS_REQUIRED,
-    REJECTED
+    PENDENTE,
+    REPARAR,
+    EM_PROGRESSO,
+    COMPLETO,
+    DIAGNOSTICO_NECESSARIO,
+    REJEITADO
 }
