@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Login from "./components/login/Login";
 import Dashboard from "./components/dashboard/Dashboard";
+import AuthProvider from "./context/AuthContext";
+import ProtectedRoute from "./components/shared/ProtectedRoute";
 
 const { ToastContainer } = createStandaloneToast();
 
@@ -16,14 +18,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
       <ToastContainer />
     </ChakraProvider>
   </React.StrictMode>

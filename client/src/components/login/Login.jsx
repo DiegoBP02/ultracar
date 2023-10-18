@@ -13,6 +13,10 @@ import {
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import ultracarImg from "../../assets//ultracar.png";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { errorNotification } from "../../services/notification";
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -31,22 +35,33 @@ const MyTextInput = ({ label, ...props }) => {
 };
 
 const LoginForm = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <Formik
       validateOnMount={true}
       validationSchema={Yup.object({
         name: Yup.string()
-          .min(4, "Nome deve conter no mínimo 4 caracteres")
+          .min(3, "Nome deve conter no mínimo 3 caracteres")
           .required("Nome é um campo obrigatório"),
         password: Yup.string()
-          .min(3, "Senha deve conter no mínimo 3 caracteres")
+          .min(4, "Senha deve conter no mínimo 4 caracteres")
           .required("Senha é um campo obrigatório"),
       })}
       initialValues={{ name: "", password: "" }}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(true);
-        // TODO: if credentials are valid, then redirect to dashboard, otherwise, catch error, finally, setSubmitting to false
-        console.log("Submitting form");
+        login(values)
+          .then((res) => {
+            navigate("/dashboard");
+          })
+          .catch((err) => {
+            errorNotification(err.code, err.response.data.message);
+          })
+          .finally(() => {
+            setSubmitting(false);
+          });
       }}
     >
       {({ isValid, isSubmitting }) => (
@@ -76,18 +91,20 @@ const LoginForm = () => {
 };
 
 const Login = () => {
-  // TODO: get customer and check if it is present, if it is, redirect to dashboard
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  });
 
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={8} flex={1} alignItems={"center"} justifyContent={"center"}>
         <Stack spacing={4} w={"full"} maxW={"md"}>
-          <Image
-            src={ultracarImg}
-            boxSize={"200px"}
-            alt={"Ultracar Logo"}
-            alignSelf={"center"}
-          />
+          <Image src={ultracarImg} alt={"Ultracar Logo"} alignSelf={"center"} />
           <Heading fontSize={"2xl"} mb={15}>
             Entre na sua conta
           </Heading>

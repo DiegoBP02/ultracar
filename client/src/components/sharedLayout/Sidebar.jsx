@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 import { FiChevronDown, FiHome, FiMenu, FiSettings } from "react-icons/fi";
 import ultracarImg from "../../assets/ultracar.png";
+import { useAuth } from "../../context/AuthContext";
 
 const LinkItems = [
   { name: "Dashboard", route: "/dashboard", icon: FiHome },
@@ -126,6 +127,7 @@ const NavItem = ({ icon, route, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  const { logout, user } = useAuth();
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -161,7 +163,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">cliente</Text>
+                  <Text fontSize="sm">{user?.name}</Text>
                 </VStack>
                 <Box display={{ base: "none", md: "flex" }}>
                   <FiChevronDown />
@@ -172,7 +174,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
               bg={useColorModeValue("white", "gray.900")}
               borderColor={useColorModeValue("gray.200", "gray.700")}
             >
-              <MenuItem>Deslogar</MenuItem>
+              <MenuItem onClick={logout}>Deslogar</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

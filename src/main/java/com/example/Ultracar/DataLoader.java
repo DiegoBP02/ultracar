@@ -190,7 +190,7 @@ public class DataLoader implements CommandLineRunner {
     private void createAdmin() {
         User admin = User.builder()
                 .name("admin")
-                .password(passwordEncoder.encode("password"))
+                .password(passwordEncoder.encode("senha"))
                 .role(Role.ADMIN)
                 .build();
         User savedAdmin = userRepository.save(admin);
