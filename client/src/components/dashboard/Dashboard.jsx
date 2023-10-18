@@ -6,7 +6,7 @@ import OrderOfService from "./OrderOfService";
 const Dashboard = () => {
   return (
     <SidebarWithHeader>
-      <OrderOfService />
+      <FindClient />
     </SidebarWithHeader>
   );
 };

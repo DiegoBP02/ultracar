@@ -2,24 +2,25 @@ import {
   Box,
   Button,
   Center,
+  Flex,
   Heading,
   Stack,
   Tag,
   Text,
   useColorModeValue,
-  WrapItem,
 } from "@chakra-ui/react";
-import { useRef } from "react";
-import Vehicle from "./Vehicle";
+import VehicleCard from "./VehicleCard";
+import { useState } from "react";
 
-export default function CardWithImage() {
-  const name = "name";
-  const cpf = "1111111";
-  const email = "email@email.com";
-  const phone = "111111";
-  const address = "address";
-
-  const vehicles = ["", "", ""];
+export default function ClientCard({
+  name,
+  cpf,
+  email,
+  phone,
+  address,
+  vehicles,
+}) {
+  const [showCars, setShowCars] = useState(false);
 
   return (
     <Box>
@@ -54,20 +55,28 @@ export default function CardWithImage() {
                 _focus={{
                   bg: "green.500",
                 }}
+                onClick={() => setShowCars(!showCars)}
               >
-                Procurar carros do cliente
+                {showCars
+                  ? "Ocultar carros do cliente"
+                  : "Procurar carros do cliente"}
               </Button>
             </Stack>
           </Box>
         </Box>
       </Center>
-      <Center py={6}>
-        {vehicles.map((vehicle, index) => (
-          <WrapItem key={index}>
-            <Vehicle {...vehicle} />
-          </WrapItem>
-        ))}
-      </Center>
+      {showCars ? (
+        <Flex>
+          {vehicles.map((vehicle) => (
+            <VehicleCard
+              licensePlate={vehicle.licensePlate}
+              model={vehicle.model}
+              year={vehicle.year}
+              accessories={vehicle.accessories}
+            />
+          ))}
+        </Flex>
+      ) : null}
     </Box>
   );
 }

@@ -15,3 +15,11 @@ export const login = async (nameAndPassword) => {
     throw e;
   }
 };
+
+export const findClientByCpf = async (cpf) => {
+  try {
+    return await axios.get(`${BASE_URL}/client/${cpf}`, getAuthConfig());
+  } catch (e) {
+    throw e;
+  }
+};
