@@ -19,14 +19,11 @@ import {
   VStack,
   Image,
 } from "@chakra-ui/react";
-import { FiChevronDown, FiHome, FiMenu, FiSettings } from "react-icons/fi";
+import { FiChevronDown, FiHome, FiMenu } from "react-icons/fi";
 import ultracarImg from "../../assets/ultracar.png";
 import { useAuth } from "../../context/AuthContext";
 
-const LinkItems = [
-  { name: "Dashboard", route: "/dashboard", icon: FiHome },
-  { name: "Configurações", route: "/dashboard/settings", icon: FiSettings },
-];
+const LinkItems = [{ name: "Dashboard", route: "/dashboard", icon: FiHome }];
 
 export default function SidebarWithHeader({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -78,7 +75,12 @@ const SidebarContent = ({ onClose, ...rest }) => {
         mt={2}
         justifyContent="space-between"
       >
-        <Image borderRadius="full" src={ultracarImg} alt="Ultracar logo" />
+        <Image
+          borderRadius="full"
+          src={ultracarImg}
+          alt="Ultracar logo"
+          mt={5}
+        />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (

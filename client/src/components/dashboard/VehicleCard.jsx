@@ -39,11 +39,14 @@ export default function VehicleCard({
           </Heading>
           <Text color={"gray.500"}>{year}</Text>
           {accessories && accessories.length > 0 ? (
-            accessories.map((accessory, index) => (
-              <Text color={"gray.500"} key={index}>
-                {accessory}
-              </Text>
-            ))
+            <Text>
+              {accessories.map((accessory, index) => (
+                <span key={index}>
+                  {accessory}
+                  {index !== accessories.length - 1 && ", "}
+                </span>
+              ))}
+            </Text>
           ) : (
             <Text color={"gray.500"}>Nenhum acessório disponível</Text>
           )}

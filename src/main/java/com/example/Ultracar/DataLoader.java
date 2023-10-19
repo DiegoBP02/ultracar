@@ -41,6 +41,7 @@ public class DataLoader implements CommandLineRunner {
         createVehicle1(client1);
         createVehicle2(client2);
         createVehicle3(client3);
+        createVehicle4(client1);
         createObservations();
         createSpecificServices();
         createGeneralServices();
@@ -150,6 +151,17 @@ public class DataLoader implements CommandLineRunner {
                 .accessories(Collections.singletonList(Accessory.AIRBAG))
                 .build();
         vehicleRepository.save(vehicle3);
+    }
+
+    private void createVehicle4(Client client1) {
+        Vehicle vehicle4 = Vehicle.builder()
+                .client(client1)
+                .licensePlate("22222")
+                .model("Volkswagen Gol")
+                .year("2018")
+                .accessories(List.of(Accessory.AIRBAG, Accessory.GPS))
+                .build();
+        vehicleRepository.save(vehicle4);
     }
 
     private Client createClient1() {

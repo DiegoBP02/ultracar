@@ -1,7 +1,5 @@
-import SidebarWithHeader from "../sharedLayout/Sidebar";
-import ClientCard from "./ClientCard";
+import SidebarWithHeader from "../sharedLayout/SidebarWithHeader";
 import FindClient from "./FindClient";
-import OrderOfService from "./OrderOfService";
 
 const Dashboard = () => {
   return (

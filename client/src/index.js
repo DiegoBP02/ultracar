@@ -8,7 +8,7 @@ import Login from "./components/login/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
-import OrderOfService from "./components/dashboard/OrderOfService";
+import OrderOfService from "./components/orderOfService/OrderOfService";
 import OrderOfServicePDFGenerator from "./pdf/OrderOfServicePDFGenerator";
 
 const { ToastContainer } = createStandaloneToast();

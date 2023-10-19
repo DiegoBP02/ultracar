@@ -10,7 +10,7 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
-import SidebarWithHeader from "../sharedLayout/Sidebar";
+import SidebarWithHeader from "../sharedLayout/SidebarWithHeader";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { errorNotification } from "../../services/notification";
