@@ -65,4 +65,4 @@ Este comando iniciará o frontend React e o backend Java, permitindo que você i
 ![localhost_3000_orderOfService_08e28d01-c88a-4213-b685-ad75611b4e70(Nest Hub Max)](https://github.com/DiegoBP02/ultracar/assets/103163622/432223b4-6a93-4dc1-a8e6-111799dd6635)
 
 ### Página de geração e para baixar o PDF
-![localhost_3000_generatePdf_1c297edf-626f-448d-b1cf-3cbc45b01bf5(Nest Hub Max)](https://github.com/DiegoBP02/ultracar/assets/103163622/b35aba29-fc7d-4a3b-b403-8a1b0203c3ae)
+![Uploading localhost_3000_generatePdf_b5569f27-05b2-4569-a8f6-56cbdbd25a2c(Nest Hub Max).png…]()
