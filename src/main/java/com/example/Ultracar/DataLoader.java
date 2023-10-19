@@ -71,18 +71,18 @@ public class DataLoader implements CommandLineRunner {
 
     private void createSpecificServices() {
         SpecificService specificService1 = SpecificService.builder()
-                .vehicleModel("Challenger")
-                .serviceName("troca de airbag")
+                .vehicleModel("Dodge Challenger")
+                .serviceName("Troca de airbag")
                 .situation(Situation.REPARAR)
                 .build();
         SpecificService specificService2 = SpecificService.builder()
-                .vehicleModel("Fiesta")
-                .serviceName("reparo do motor")
+                .vehicleModel("Ford Fiesta")
+                .serviceName("Reparo do motor")
                 .situation(Situation.COMPLETO)
                 .build();
         SpecificService specificService3 = SpecificService.builder()
-                .vehicleModel("Gol")
-                .serviceName("substituição da bateria")
+                .vehicleModel("Volkswagen Gol")
+                .serviceName("Substituição da bateria")
                 .situation(Situation.EM_PROGRESSO)
                 .build();
 
@@ -96,17 +96,17 @@ public class DataLoader implements CommandLineRunner {
 
     private void createGeneralServices() {
         GeneralService generalService1 = GeneralService.builder()
-                .serviceName("lavagem do carro")
+                .serviceName("Lavagem do carro")
                 .situation(Situation.PENDENTE)
                 .build();
 
         GeneralService generalService2 = GeneralService.builder()
-                .serviceName("troca de óleo")
+                .serviceName("Troca de óleo")
                 .situation(Situation.EM_PROGRESSO)
                 .build();
 
         GeneralService generalService3 = GeneralService.builder()
-                .serviceName("alinhamento e balanceamento")
+                .serviceName("Alinhamento e balanceamento")
                 .situation(Situation.EM_PROGRESSO)
                 .build();
 
@@ -122,9 +122,9 @@ public class DataLoader implements CommandLineRunner {
         Vehicle vehicle1 = Vehicle.builder()
                 .client(client1)
                 .licensePlate("11111")
-                .model("Fiesta")
+                .model("Ford Fiesta")
                 .year("2019")
-                .accessories(Collections.singletonList(Accessory.ACS))
+                .accessories(Collections.singletonList(Accessory.AIRBAG))
                 .build();
         Vehicle savedVehicle = vehicleRepository.save(vehicle1);
         System.out.println("Vehicle saved: " + savedVehicle.getId());
@@ -134,9 +134,9 @@ public class DataLoader implements CommandLineRunner {
         Vehicle vehicle2 = Vehicle.builder()
                 .client(client2)
                 .licensePlate("22222")
-                .model("Gol")
+                .model("Volkswagen Gol")
                 .year("2018")
-                .accessories(Collections.singletonList(Accessory.ACS))
+                .accessories(Collections.singletonList(Accessory.AIRBAG))
                 .build();
         vehicleRepository.save(vehicle2);
     }
@@ -145,9 +145,9 @@ public class DataLoader implements CommandLineRunner {
         Vehicle vehicle3 = Vehicle.builder()
                 .client(client3)
                 .licensePlate("11111")
-                .model("Fiesta")
+                .model("Ford Fiesta")
                 .year("2019")
-                .accessories(Collections.singletonList(Accessory.ACS))
+                .accessories(Collections.singletonList(Accessory.AIRBAG))
                 .build();
         vehicleRepository.save(vehicle3);
     }

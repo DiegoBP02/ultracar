@@ -88,7 +88,7 @@ class OrderOfServiceIntegrationTest {
             .licensePlate("123")
             .year("1234")
             .model("model")
-            .accessories(Collections.singletonList(Accessory.ACS))
+            .accessories(Collections.singletonList(Accessory.AIRBAG))
             .client(client)
             .build();
     private Observation observation = Observation.builder()

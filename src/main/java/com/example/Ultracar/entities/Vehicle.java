@@ -30,7 +30,6 @@ public class Vehicle {
     @ElementCollection(targetClass = Accessory.class)
     @CollectionTable(name = "car_accessories", joinColumns = @JoinColumn(name = "car_id"))
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private List<Accessory> accessories;
     @JsonIgnore
     @ManyToOne

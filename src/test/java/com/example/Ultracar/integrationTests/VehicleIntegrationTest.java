@@ -84,14 +84,14 @@ class VehicleIntegrationTest {
             .licensePlate("123")
             .year("1234")
             .model("model")
-            .accessories(Collections.singletonList(Accessory.ACS))
+            .accessories(Collections.singletonList(Accessory.AIRBAG))
             .client(client)
             .build();
     private VehicleDTO vehicleDTO = VehicleDTO.builder()
             .licensePlate("123")
             .year("1234")
             .model("model")
-            .accessories(Collections.singletonList(Accessory.ACS))
+            .accessories(Collections.singletonList(Accessory.AIRBAG))
             .clientCpf(client.getCpf())
             .build();
 
