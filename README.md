@@ -48,3 +48,19 @@ npm start
 Este comando iniciará o frontend React e o backend Java, permitindo que você interaja com a aplicação acessando-a em seu navegador da web.
 
 5. Após executar com sucesso a aplicação, você deverá ver mensagens de log indicando o início da aplicação. Os logs exibirão a porta na qual a aplicação está em execução. Além disso, certifique-se de que o frontend React também esteja em execução, acessando-o em seu navegador da web no endereço especificado.
+
+## Fotos do projeto
+#### Nota: As capturas de tela da página inteira sofrem pequenas alterações em relação a aparência real da aplicação devido ao esticamento da imagem.
+
+### Página de autenticação
+![localhost_3000_(Nest Hub Max) (2)](https://github.com/DiegoBP02/ultracar/assets/103163622/4939ae0d-fa3c-4e50-94eb-492bf36f8791)
+
+### Página principal
+#### (Interface depois de procurar o cliente e seus veículos)
+![localhost_3000_dashboard(Nest Hub Max) (7)](https://github.com/DiegoBP02/ultracar/assets/103163622/d8d017bf-3a6a-4e9a-9836-5e002a8e470a)
+
+### Página de criação da ordem de serviço
+![localhost_3000_orderOfService_08e28d01-c88a-4213-b685-ad75611b4e70(Nest Hub Max)](https://github.com/DiegoBP02/ultracar/assets/103163622/432223b4-6a93-4dc1-a8e6-111799dd6635)
+
+### Página de geração e para baixar o PDF
+![localhost_3000_generatePdf_1c297edf-626f-448d-b1cf-3cbc45b01bf5(Nest Hub Max)](https://github.com/DiegoBP02/ultracar/assets/103163622/425705cb-d5b6-4fb1-ac09-a81f2d21a82b)
