@@ -21,7 +21,7 @@ public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String licensePlate;
     @Column(nullable = false)
     private String year;
