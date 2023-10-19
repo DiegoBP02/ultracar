@@ -49,6 +49,8 @@ Este comando iniciará o frontend React e o backend Java, permitindo que você i
 
 5. Após executar com sucesso a aplicação, você deverá ver mensagens de log indicando o início da aplicação. Os logs exibirão a porta na qual a aplicação está em execução. Além disso, certifique-se de que o frontend React também esteja em execução, acessando-o em seu navegador da web no endereço especificado.
 
+6. A aplicação cria uma conta com o nome 'admin' e a senha 'senha' ao iniciar, você pode usar essas credenciais para se logar.
+
 ## Fotos do projeto
 #### Nota: As capturas de tela da página inteira sofrem pequenas alterações em relação a aparência real da aplicação devido ao esticamento da imagem.
 
