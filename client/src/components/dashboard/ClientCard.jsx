@@ -43,7 +43,7 @@ export default function ClientCard({
               </Heading>
               <Text color={"gray.500"}>{email}</Text>
               <Text color={"gray.500"}>Phone {phone}</Text>
-              <Text color={"gray.500"}>Address {address}</Text>
+              <Text color={"gray.500"}>Endereço {address}</Text>
               <Button
                 bg={"red.400"}
                 color={"white"}
