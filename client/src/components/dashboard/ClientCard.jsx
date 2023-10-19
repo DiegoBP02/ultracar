@@ -58,8 +58,8 @@ export default function ClientCard({
                 onClick={() => setShowCars(!showCars)}
               >
                 {showCars
-                  ? "Ocultar carros do cliente"
-                  : "Procurar carros do cliente"}
+                  ? "Ocultar veículos do cliente"
+                  : "Procurar veículos do cliente"}
               </Button>
             </Stack>
           </Box>
