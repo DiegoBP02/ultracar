@@ -3,6 +3,7 @@ package com.example.Ultracar.services;
 import com.example.Ultracar.dtos.OrderOfServiceDTO;
 import com.example.Ultracar.dtos.OrderOfServiceResponse;
 import com.example.Ultracar.entities.*;
+import com.example.Ultracar.exceptions.ResourceNotFoundException;
 import com.example.Ultracar.exceptions.UniqueConstraintViolationException;
 import com.example.Ultracar.repositories.OrderOfServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.security.SecureRandom;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class OrderOfServiceService {
@@ -71,8 +73,10 @@ public class OrderOfServiceService {
         return String.format("%05d", num);
     }
 
-    public List<OrderOfService> findAll() {
-        return orderOfServiceRepository.findAll();
+    public OrderOfServiceResponse findById(UUID id) {
+        OrderOfService orderOfService = orderOfServiceRepository.findById(id)
+                .orElseThrow(() -> new
+                        ResourceNotFoundException("OrderOfService not found. ID: " + id));
+        return new OrderOfServiceResponse(orderOfService);
     }
-
 }

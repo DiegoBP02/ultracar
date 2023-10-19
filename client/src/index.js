@@ -9,6 +9,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import AuthProvider from "./context/AuthContext";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
 import OrderOfService from "./components/dashboard/OrderOfService";
+import OrderOfServicePDFGenerator from "./pdf/OrderOfServicePDFGenerator";
 
 const { ToastContainer } = createStandaloneToast();
 
@@ -30,6 +31,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <OrderOfService />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/generatePdf/:orderOfServiceId",
+    element: (
+      <ProtectedRoute>
+        <OrderOfServicePDFGenerator />
       </ProtectedRoute>
     ),
   },

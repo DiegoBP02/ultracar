@@ -123,3 +123,11 @@ export const saveOrderOfService = async (orderOfServiceRequest) => {
     throw e;
   }
 };
+
+export const getOrderOfServiceById = async (id) => {
+  try {
+    return await axios.get(`${BASE_URL}/orderOfService/${id}`, getAuthConfig());
+  } catch (e) {
+    throw e;
+  }
+};

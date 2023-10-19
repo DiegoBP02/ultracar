@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import SidebarWithHeader from "../sharedLayout/Sidebar";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { errorNotification } from "../../services/notification";
 import {
   getGeneralServices,
@@ -29,6 +29,7 @@ import { useEffect, useState } from "react";
 
 export default function OrderOfService() {
   const { vehicleId } = useParams();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [err, setError] = useState("");
@@ -328,7 +329,9 @@ export default function OrderOfService() {
       generalServicesIds,
     };
 
-    saveOrderOfService(request);
+    await Promise.resolve(saveOrderOfService(request))
+      .then((res) => navigate(`/generatePdf/${res.data.id}`))
+      .catch((err) => setError(err.response.data.message));
   };
 
   useEffect(() => {

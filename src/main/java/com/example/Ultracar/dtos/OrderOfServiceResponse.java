@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 import java.util.function.Function;
 
 
@@ -16,6 +17,7 @@ import java.util.function.Function;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderOfServiceResponse {
+    private UUID id;
     private Instant createdAt;
     private String diagnosticId;
     private ClientResponse clientResponse;
@@ -26,6 +28,7 @@ public class OrderOfServiceResponse {
 
     @Builder
     public OrderOfServiceResponse(OrderOfService orderOfService) {
+        this.id= orderOfService.getId();
         this.createdAt = orderOfService.getCreatedAt();
         this.diagnosticId = orderOfService.getDiagnosticId();
         this.clientResponse = mapClientToClientResponse(orderOfService.getClient());
