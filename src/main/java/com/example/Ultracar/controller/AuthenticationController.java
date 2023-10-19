@@ -29,7 +29,7 @@ public class AuthenticationController {
     @PostMapping(value = "/registerUser")
     public ResponseEntity<Void> registerUser(@Valid @RequestBody RegisterDTO registerDTO) {
         authenticationService.registerUser(registerDTO);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(201).build();
     }
 
 }
